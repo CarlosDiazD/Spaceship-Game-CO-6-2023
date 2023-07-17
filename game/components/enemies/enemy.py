@@ -31,4 +31,20 @@ class Enemy:
         screen.blit(self.image, self.rect)
 
     def move(self):
-        pass
+        self.rect.y += self.SPEED_Y
+        if self.move_x == LEFT:
+            self.rect.x -= self.SPEED_X
+
+            if self.rect.x <= 0 or self.index > self.INTERVAL:
+                self.move_x = RIGHT
+                self.index = 0
+        else:
+            self.rect.x += self.SPEED_X
+
+            if (
+                self.rect.x >= SCREEN_WIDTH - self.image.get_width()
+                or self.index > self.INTERVAL
+            ):
+                self.move_x = LEFT
+                self.index = 0
+       

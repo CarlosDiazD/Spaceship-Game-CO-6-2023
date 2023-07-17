@@ -11,6 +11,7 @@ class Stingray(Enemy):
         self.image = STINGRAY
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
         super().__init__(self.image)
+    
     def update(self):
        
         if self.rect.y >= 0:
@@ -19,16 +20,8 @@ class Stingray(Enemy):
             self.rect.y += self.SPEED_Y
         else :
             self.rect.y -= self.SPEED_Y
-            if self.index > self.INTERVAL*2:
-              self.index = 0
+            
            
-        if self.move_x == LEFT:
-            self.rect.x -= self.SPEED_X
-            if self.rect.x <= 0 :
-                self.move_x = RIGHT
-        else:
-            self.rect.x += self.SPEED_X
-            if self.rect.x >= SCREEN_WIDTH - self.image.get_width():
-                self.move_x = LEFT
+      
         
         super().update()
