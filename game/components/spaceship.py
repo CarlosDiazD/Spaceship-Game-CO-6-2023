@@ -56,11 +56,11 @@ class Spaceship:
     def mov_up_left(self,game_speed):
         self.mov_up(game_speed/1.5)
         self.mov_lef(game_speed/1.5)
-        pass
+       
     def mov_up_rigth(self,game_speed):
         self.mov_up(game_speed/1.5)
         self.mov_rigth(game_speed/1.5)
-        pass
+      
     def mov_down_left(self,game_speed):
         self.mov_down(game_speed/1.5)
         self.mov_lef(game_speed/1.5)

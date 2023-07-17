@@ -1,0 +1,34 @@
+import random
+from game.utils.constants import SCREEN_WIDTH, SCREEN_HEIGHT, LEFT, RIGHT
+
+
+class Enemy:
+    Y_POS = 0
+    SPEED_X = 5
+    SPEED_Y = 2
+    MOVE_X = [LEFT, RIGHT]
+    INTERVAL = 100
+
+    def __init__(self, image):
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randint(
+            image.get_width(), SCREEN_WIDTH - image.get_width()
+        )
+        self.rect.y = self.Y_POS
+        self.move_x = random.choice(self.MOVE_X)
+        self.index = 0
+        self.is_visible = True
+
+    def update(self):
+        self.move()
+        if self.rect.y > SCREEN_HEIGHT:
+            self.is_visible = False
+
+        self.index += 1
+
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
+
+    def move(self):
+        pass
