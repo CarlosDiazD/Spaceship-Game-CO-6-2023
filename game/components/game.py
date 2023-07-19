@@ -6,6 +6,7 @@ from game.components.bullets.bullet_handler import BulletHandler
 from game.utils import text_utils
 
 class Game:
+    BEST_SCORE = 0
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -22,6 +23,7 @@ class Game:
         self.bullet_handler= BulletHandler()
         self.score = 0
         self.number_deaths = 0
+        self.new_best_score =False
 
     def run(self):
         # Game loop: events - update - draw
@@ -37,7 +39,7 @@ class Game:
         for event in pygame.event.get():
            if event.type == pygame.QUIT:
                 self.running = False
-           elif event.type == pygame.KEYDOWN and not self.playing:
+           elif event.type == pygame.KEYUP and not self.playing:
                 self.reset()
                 self.playing = True                
 
@@ -52,6 +54,9 @@ class Game:
                 pygame.time.delay(300)
                 self.playing = False
                 self.number_deaths += 1
+                if self.score > self.BEST_SCORE:
+                    self.BEST_SCORE = self.score
+                    self.new_best_score = True
         
 
     def draw(self):
@@ -79,19 +84,31 @@ class Game:
         self.y_pos_bg += self.game_speed
    
     def draw_menu(self):
+        
         if self.number_deaths == 0:
             text, text_rect = text_utils.get_message('Press any Key to Start', 30, WHITE)
             self.screen.blit(text, text_rect)
         else:
             text, text_rect = text_utils.get_message('Press any Key to Restart', 30, WHITE)
-            score, score_rect = text_utils.get_message(f'Your score is: {self.score}', 30, WHITE, height=SCREEN_HEIGHT//2 + 50)
+            if self.new_best_score:
+                score, score_rect = text_utils.get_message(f'congratulations your new best score is: {self.BEST_SCORE}', 30, WHITE, height=SCREEN_HEIGHT//2 + 50)
+            else:
+                score, score_rect = text_utils.get_message(f'Your score is: {self.score}', 30, WHITE, height=SCREEN_HEIGHT//2 + 50)
+            deats , deaths_rect =  text_utils.get_message(f'Number of attemps: {self.number_deaths}', 25, WHITE, height=SCREEN_HEIGHT//2 + 100)     
             self.screen.blit(text, text_rect)
             self.screen.blit(score, score_rect)
+            self.screen.blit(deats, deaths_rect)
+
+            
     def draw_score(self):
         score, score_rect = text_utils.get_message(f'Your score is: {self.score}', 20, WHITE, 1000, 40)
+        best_score, best_score_rect = text_utils.get_message(f'Best score: {self.BEST_SCORE}', 15, WHITE, 1000, 60)
         self.screen.blit(score, score_rect)
+        self.screen.blit(best_score, best_score_rect)
+        
     def reset(self):
         self.player.reset()
         self.enemy_handler.reset()
         self.bullet_handler.reset()
         self.score = 0
+        self.new_best_score = False
