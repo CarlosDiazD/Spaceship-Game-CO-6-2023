@@ -12,16 +12,11 @@ class Stingray(Enemy):
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
         super().__init__(self.image)
     
-    def update(self):
-       
+    def update(self,bullet_handler):
         if self.rect.y >= 0:
             self.rect.y += self.SPEED_Y
         if self.index <= self.INTERVAL // 2:
             self.rect.y += self.SPEED_Y
         else :
             self.rect.y -= self.SPEED_Y
-            
-           
-      
-        
-        super().update()
+        super().update(bullet_handler)
