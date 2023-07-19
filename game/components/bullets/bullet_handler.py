@@ -11,7 +11,7 @@ class BulletHandler:
             elif type(bullet) == BulletPlayer:
                 for enemy in enemys:
                     bullet.update(enemy)
-                if  bullet.hit :
+                if  not bullet.is_visible :
                  self.remove_bullet(bullet)
         
     def draw( self,screen):
@@ -24,3 +24,5 @@ class BulletHandler:
             self.bullets.append(BulletPlayer(center))
     def remove_bullet(self,bullet):
         self.bullets.remove(bullet)
+    def reset(self):
+        self.bullets=[]

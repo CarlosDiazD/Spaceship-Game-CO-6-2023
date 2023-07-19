@@ -33,3 +33,4 @@ LEFT = "left"
 RIGHT = "right"
 BULLET_ENEMY_TYPE='enemy'
 BULLET_PLAYER_TYPE='player'
+WHITE = (255, 255, 255)

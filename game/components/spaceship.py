@@ -3,13 +3,13 @@ from game.utils.constants  import SPACESHIP,SCREEN_WIDTH,SCREEN_HEIGHT,BULLET_PL
 
 class Spaceship:
     WIDTH = 40
-    HEIGTH = 60
+    HEIGHT = 60
     X_POS= (SCREEN_WIDTH//2)-WIDTH
     Y_POS= 500
     SHOOTING_TIME = 20
     def __init__(self) :
         self.image = SPACESHIP
-        self.image = pygame.transform.scale(self.image,(self.WIDTH,self.HEIGTH))
+        self.image = pygame.transform.scale(self.image,(self.WIDTH,self.HEIGHT))
         self.rect = self.image.get_rect()
         self.rect.x= self.X_POS
         self.rect.y= self.Y_POS
@@ -76,6 +76,14 @@ class Spaceship:
         self.mov_rigth(game_speed/1.5)
     def shoot(self,bullet_handler):
         bullet_handler.add_bullet(BULLET_PLAYER_TYPE, self.rect.center)
+    
+    def reset(self):
+        self.image = SPACESHIP
+        self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
+        self.rect = self.image.get_rect()
+        self.rect.x = self.X_POS
+        self.rect.y = self.Y_POS
+        self.is_alive = True    
         
        
             
