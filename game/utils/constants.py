@@ -16,10 +16,10 @@ SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 CADENCE = pygame.image.load(os.path.join(IMG_DIR, 'Other/hevy.jpg'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-BG_1 = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-BG_2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-BG_3 = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-BG_4 = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
+BG_1 = pygame.image.load(os.path.join(IMG_DIR, 'Other/Blue_nebula.png'))
+BG_2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/Green_nebula.png'))
+BG_3 = pygame.image.load(os.path.join(IMG_DIR, 'Other/Purple_nebula.png'))
+
 
 SOUND_TRACK_1 = os.path.join(SFX_DIR,'Tracks/sound track.mp3')
 SOUND_TRACK_2 = os.path.join(SFX_DIR,'Tracks/sound track 2.mp3')

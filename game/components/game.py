@@ -1,6 +1,6 @@
 import pygame
 import random
-from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE,WHITE,SOUND_TRACK_1,BG_2,BG_3,BG_4
+from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE,WHITE,SOUND_TRACK_1,BG_2,BG_3
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_handler import EnemyHandler
 from game.components.bullets.bullet_handler import BulletHandler
@@ -10,7 +10,7 @@ from game.utils import sound_utils
 
 class Game:
     BEST_SCORE = 0
-    BACKGROUND = [BG,BG_2,BG_3,BG_4]
+    BACKGROUND = [BG,BG_2,BG_3]
     def __init__(self):
         pygame.init()
         pygame.display.set_caption(TITLE)
@@ -71,8 +71,7 @@ class Game:
                 if self.score > self.BEST_SCORE:
                     self.BEST_SCORE = self.score
                     self.new_best_score = True
-            if self.enemy_handler.match % 2:
-                self.background = random.choice(self.BACKGROUND)
+            
         
 
     def draw(self):
@@ -118,7 +117,6 @@ class Game:
             self.screen.blit(text, text_rect)
             self.screen.blit(score, score_rect)
             self.screen.blit(deats, deaths_rect)
-            self.background = random.choice(self.BACKGROUND)
         
 
             
