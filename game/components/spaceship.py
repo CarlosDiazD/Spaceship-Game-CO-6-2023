@@ -1,5 +1,7 @@
 import pygame
-from game.utils.constants  import SPACESHIP,SCREEN_WIDTH,SCREEN_HEIGHT,BULLET_PLAYER_TYPE
+from game.utils.constants  import SPACESHIP,SCREEN_WIDTH,SCREEN_HEIGHT,BULLET_PLAYER_TYPE,SPACESHIP_SHIELD
+from game.components.power_ups.shield import Shield
+from game.components.power_ups.cadence import Cadence
 
 class Spaceship:
     WIDTH = 40
@@ -14,7 +16,10 @@ class Spaceship:
         self.rect.x= self.X_POS
         self.rect.y= self.Y_POS
         self.is_alive = True
+        self.has_shield = False
         self.shooting_time=0
+        self.time_up=0
+        self.live = 3
     
     def update(self,game_speed,user_input,bullet_handler):
         if user_input[pygame.K_SPACE]: 
@@ -37,7 +42,11 @@ class Spaceship:
          self.mov_up(game_speed)
         elif user_input[pygame.K_DOWN]:
          self.mov_down(game_speed)
-        
+        if self.has_shield:
+            time_to_show = round((self.time_up - pygame.time.get_ticks())/1000, 2)
+            if time_to_show < 0:
+                self.deactive_power_up()
+
     def draw(self,screen):
         screen.blit(self.image,self.rect )
     
@@ -77,13 +86,35 @@ class Spaceship:
     def shoot(self,bullet_handler):
         bullet_handler.add_bullet(BULLET_PLAYER_TYPE, self.rect.center)
     
+    def activate_power_up(self, power_up):
+        self.time_up = power_up.time_up
+        if type(power_up) == Shield:
+            self.image = SPACESHIP_SHIELD
+            self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT+5))
+            self.has_shield = True
+        elif type(power_up) == Cadence:
+            self.SHOOTING_TIME = 10
+    
+    def deactive_power_up(self):
+        self.has_shield = False
+        self.image = SPACESHIP
+        self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
+        self.SHOOTING_TIME = 30
+    
+    def hit(self,damage):
+        self.live -= damage
+        if self.live == 0:
+         self.is_alive = False
+    
     def reset(self):
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
         self.rect = self.image.get_rect()
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
-        self.is_alive = True    
+        self.is_alive = True
+        self.has_shield = False   
+        self.live = 3 
         
        
             

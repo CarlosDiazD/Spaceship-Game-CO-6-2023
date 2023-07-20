@@ -6,6 +6,9 @@ from game.utils.constants import STINGRAY,LEFT,RIGHT,SCREEN_WIDTH,SCREEN_HEIGHT
 class Stingray(Enemy):
     WIDTH = 40
     HEIGHT = 60
+    LIVE = 10
+    SPEED_Y = 2
+    POINTS = 10
 
     def __init__(self):
         self.image = STINGRAY

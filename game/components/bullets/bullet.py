@@ -1,4 +1,5 @@
 class Bullet:
+    DAMAGE = 1
     def __init__(self,image,center):
         self.image = image
         self.rect = self.image.get_rect()
@@ -6,8 +7,8 @@ class Bullet:
         self.is_visible = True
         
     def update(self, object):
-        if self.rect.colliderect(object.rect):
-            object.is_alive = False
+        if self.rect.colliderect(object.rect):  
+            object.hit(self.DAMAGE)
             self.is_visible = False
             
     

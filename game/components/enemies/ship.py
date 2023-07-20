@@ -7,6 +7,7 @@ from game.utils.constants import ENEMY_1,LEFT,RIGHT,SCREEN_WIDTH
 class Ship(Enemy):
     WIDTH = 40
     HEIGHT = 60
+    LIVE = 5
 
     def __init__(self):
         self.image = ENEMY_1

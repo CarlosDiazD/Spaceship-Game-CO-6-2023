@@ -8,6 +8,8 @@ class Enemy:
     MOVE_X = [LEFT, RIGHT]
     INTERVAL = 100
     SHOOTING_TIME = 30
+    LIVE = 0
+    POINTS = 1
 
     def __init__(self, image):
         self.image = image
@@ -21,7 +23,7 @@ class Enemy:
         self.shooting_time=0
         self.is_visible = True
         self.is_alive = True
-
+        self.points= self.POINTS
     def update(self, bullet_handler):
         self.index += 1
         self.shooting_time += 1
@@ -54,3 +56,7 @@ class Enemy:
     def shoot(self, bullet_handler):
         if self.shooting_time % self.SHOOTING_TIME == 0:
             bullet_handler.add_bullet(BULLET_ENEMY_TYPE, self.rect.center)
+    def hit(self,damage):
+        self.LIVE -= damage
+        if self.LIVE == 0:
+            self.is_alive= False

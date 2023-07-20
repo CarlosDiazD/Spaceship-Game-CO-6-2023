@@ -5,6 +5,7 @@ class BulletPlayer(Bullet):
     WIDTH =9
     HEIGHT= 32
     SPEED= 10
+    DAMAGE = 5
     def __init__(self,center):
         self.image = BULLET
         self.image = pygame.transform.scale(self.image,(self.WIDTH,self.HEIGHT))
