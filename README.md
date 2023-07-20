@@ -17,7 +17,7 @@ las cuales se generan de manera a leatoria a exepcion de el jefe el cual se gene
 
 el jugador cuent con una nave que se puede mover en 8 direcciones y puede adquirir poderes 
 
-
+![image](https://ih1.redbubble.net/image.4869209775.2887/flat,128x,075,f-pad,128x128,f8f8f8.jpg)
 un poder que le da mas cadencia de disparo y 
 
 ![image](https://github.com/CarlosDiazD/Spaceship-Game-CO-6-2023/blob/main/game/assets/Other/shield.png)
