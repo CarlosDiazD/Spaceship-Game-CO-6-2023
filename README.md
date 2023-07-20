@@ -16,7 +16,7 @@ y una nave generica con 5 puntos de vida
 las cuales se generan de manera a leatoria a exepcion de el jefe el cual se genera cada multiplo de 5 de enemigos que derrotemos pero no aparecera asta que se elimine el actual
 
 el jugador cuent con una nave que se puede mover en 8 direcciones y puede adquirir poderes 
-![image](https://github.com/CarlosDiazD/Spaceship-Game-CO-6-2023/blob/main/game/assets/Other/Hevy.jpg)
+
 
 un poder que le da mas cadencia de disparo y 
 
